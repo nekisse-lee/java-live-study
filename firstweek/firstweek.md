@@ -14,8 +14,10 @@
 6.   JVM 구성 요소
 7.   JDK와 JRE의 차이
 ---
- 
 
-#### 1. jvm이란 무엇인가
+
+#### 1. JVM이란 무엇인가
+![jvm](/images/firstweek/jvm.jpeg "jvm")
  
   
+
