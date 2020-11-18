@@ -16,7 +16,7 @@
 ---
 
 
-### <div id="jvm" >1.JVM이란 무엇인가 </div>
+### <div id="jvm"> 1.JVM이란 무엇인가 </div>
 
 ![jvm](/images/firstweek/jvm.jpeg "jvm")
 >출처 : 이것이 자바다 - 신용권 지음
@@ -29,4 +29,4 @@
      자바 프로그램은 완전한 기계어가 아닌, 중간 단계의 `바이트 코드`이기 때문에   
      이것을 실행할 수 있는 JVM(Java Virtual Machine)이 필요하다.
 
-###<div id="compile"> 2.컴파일 하는 방법 </div>
+### <div id="compile"> 2.컴파일 하는 방법 </div>
