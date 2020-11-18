@@ -37,7 +37,8 @@
 ### <div id="compile"> 2.컴파일 하는 방법 </div>
 ### <div id="howtorun"> 3.실행 방법 </div>
 
-위의 사진을 보며 이해 해 보자.  
+[위의 사진을 보며 이해 해 보자.](#jvm)  
+
 helloword.java 라는 소스파일이 있다고 가정하고  컴파일을 한다고 가정해 보면  
 helloword.java를  
 컴파일러(javac.exe)를 통해   
@@ -73,3 +74,4 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 
 
 ### <div id="bytecode"> 4.바이트코드란 무엇인가 </div>
+
