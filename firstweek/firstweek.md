@@ -67,7 +67,8 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 >```
   
 아래 사진은 [2.](#compile)와 [3.](#howtorun) 의 과정을 담은 예제이다.
-<div id="Compilationprocess"> </div>
+<div id="Compilationprocess"> </div>  
+
 ![Compilationprocess](/images/firstweek/Compilationprocess.jpeg "컴파일과 실행 과정")
 
 ---
