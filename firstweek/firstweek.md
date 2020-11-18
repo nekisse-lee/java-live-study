@@ -2,7 +2,7 @@
 
 # 목표
 
-자바 소스 파일(.java)을 JVM으로 실행하는 과정 이해하기.[^각주테스트]
+자바 소스 파일(.java)을 JVM으로 실행하는 과정 이해하기.
 
 ## 학습할 것
 
@@ -32,11 +32,15 @@
      `자바 프로그램은 완전한 기계어가 아닌, 중간 단계의 바이트 코드`이기 때문에   
      이것을 실행할 수 있는 JVM(Java Virtual Machine)이 필요하다.  
 
->좀더 쉽게 예를 들자면 다른 모르는 언어들을 한국어로 바꿔주는 `통역사`의 역할이랄까?
+>좀더 쉽게 예를 들자면 다른 모르는 언어들을 한국어로 바꿔주는 `통역사`의 역할이랄까?  
 
-### <div id="compile"> 2.컴파일 하는 방법 </div>
+---
+
+### <div id="compile"> 2.컴파일 하는 방법 </div>  
+
 ### <div id="howtorun"> 3.실행 방법 </div>
 
+---
 [위의 사진을 보며 이해 해 보자.](#jvm)  
 
 helloword.java 라는 소스파일이 있다고 가정하고  컴파일을 한다고 가정해 보면  
@@ -52,7 +56,7 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 `텍스트 편집기`을 열어  아래 소스코드를 작성하고  `HelloWorld.java`  확장자까지 붙여 저장을 하자.    
 
 
->HelloWorld.java 파일의 소스코드
+<div id = "code"> HelloWorld.java 파일의 소스코드 </div>
 >
 >```java
 >public class HelloWorld {
@@ -62,20 +66,54 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 >}
 >```
   
-
-
-
+아래 사진은 [2.](#compile)와 [3.](#howtorun) 의 과정을 담은 예제이다.
 
 ![Compilationprocess](/images/firstweek/Compilationprocess.jpeg "컴파일과 실행 과정")
 
-
-
-
-
-
+---
 ### <div id="bytecode"> 4.바이트코드란 무엇인가 </div>
-[^각주테스트]:ㅇㄹㅇㄹㅇㄹㅇㄹㄹ
-[위의 사진](#jvm)  
+
+[위의 사진](#jvm)과 
 [예제](#Compilationprocess) 을 참고해 보자.  
+
+[1. jvm](#jvm) 의 설명에 `자바 프로그램은 완전한 기계어가 아닌, 중간 단계의 바이트 코드` 라는 설명이 있다.    
+
+일단 바이트코드의 형태를 보자  
+그리고 [위의 코드](#code) 를 `자바바이트코드로 컴파일한 결과(HelloWorld.class)`가 아래의 소스코드이다.  
+
+``` java
+public class HelloWorld {
+
+  // compiled from: HelloWorld.java
+
+  // access flags 0x1
+  public <init>()V
+   L0
+    LINENUMBER 1 L0
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+    RETURN
+   L1
+    LOCALVARIABLE this LHelloWorld; L0 L1 0
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static main([Ljava/lang/String;)V
+   L0
+    LINENUMBER 3 L0
+    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;
+    LDC "\ud5ec\ub85c \uc6d4\ub4dc"
+    INVOKEVIRTUAL java/io/PrintStream.println (Ljava/lang/String;)V
+   L1
+    LINENUMBER 4 L1
+    RETURN
+   L2
+    LOCALVARIABLE args [Ljava/lang/String; L0 L2 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+}
+
+```
  
 
