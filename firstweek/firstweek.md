@@ -10,10 +10,9 @@
 [2.   컴파일 하는 방법](#compile)   
 [3.   실행하는 방법](#howtorun)  
 [4.   바이트코드란 무엇인가](#bytecode)   
-[5.   JIT 컴파일러란 무엇이며 어떻게 동작하는지]   
-[6.   JVM 구성 요소]   
-
-[7.   JDK와 JRE의 차이]   
+[5.   JIT 컴파일러란 무엇이며 어떻게 동작하는지](#jitcompiler) 
+[6.   JVM 구성 요소](#componentsofjvm)
+[7.   JDK와 JRE의 차이](#jdkjre)   
 ---
 
 
@@ -24,10 +23,10 @@
 
 >출처 : 이것이 자바다 - 신용권 지음
 
-   `JVM(Java Virtual Machine)`은  
+  - `JVM(Java Virtual Machine)`은  
     `운영체제를 대신해서 자바 프로그램을 실행하는 가상의 운영체제 역할`을 한다.   
      운영체제별로 프로그램을 실행하고 관리하는 방법이 다르기 때문에,   
-     운영체제와 자바 프로그램을 중계하는 JVM(Java Virtual Machine)을 두어   
+     `운영체제와 자바 프로그램을 중계`하는 `JVM(Java Virtual Machine)`을 두어   
      자바 프로그램이 `여러 운영체제에서 동일한 실행결과`가 나오도록 설계한 것이다.   
      `자바 프로그램은 완전한 기계어가 아닌, 중간 단계의 바이트 코드`이기 때문에   
      이것을 실행할 수 있는 JVM(Java Virtual Machine)이 필요하다.  
@@ -45,7 +44,7 @@
 
 helloword.java 라는 소스파일이 있다고 가정하고  컴파일을 한다고 가정해 보면  
 helloword.java를  
-컴파일러(javac.exe)를 통해   
+자바컴파일러(javac.exe)를 통해   
 helloword.class 의 바이트 코드 파일로 변경(컴파일)한다.   
 그리고 변경된(컴파일된) 바이트코드파일 (helloword.class)을  
 jvm(java.exe)으로 구동하여 각각의 운영 체제에 맞게 실행가능 해 진다.
@@ -66,7 +65,9 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 >}
 >```
   
-아래 사진은 [2.](#compile)와 [3.](#howtorun) 의 과정을 담은 예제이다.
+아래 사진은 [2.컴파일 하는 방법](#compile)와 [3.실행 방법](#howtorun) 의 과정을 담은 예제이다.  
+사진의 1. 2. 3. 을 천천히 살펴보자.
+
 <div id="Compilationprocess"> </div>  
 
 ![Compilationprocess](/images/firstweek/Compilationprocess.jpeg "컴파일과 실행 과정")
@@ -74,13 +75,21 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 ---
 ### <div id="bytecode"> 4.바이트코드란 무엇인가 </div>
 
+- `바이트코드(Bytecode)는 고급 언어로 작성된 소스 코드를 가상머신이 이해할 수 있는 중간 코드로 컴파일한 것을 말한다.`  
+- 바이트코드는 기계어는 아니지만 `가상 머신에 의해 기계어로 손쉽게 변환할 수 있는 코드`이다. 
+ `가상머신은 이 바이트코드를 각각의 하드웨어 아키텍처에` 맞는 `기계어`로 `다시 컴파일`한다.  
+ 어셈블리어에 가까운 형태를 띄고 있으며 어떨 때는 가상머신용 오브젝트 코드까지 바이트코드라고 부르기도 한다.
+       
+  >출처 나무위키
+  
+
 [위의 사진](#jvm)과 
 [예제](#Compilationprocess) 을 참고해 보자.  
 
 [1. jvm](#jvm) 의 설명에 `자바 프로그램은 완전한 기계어가 아닌, 중간 단계의 바이트 코드` 라는 설명이 있다.    
 
-일단 바이트코드의 형태를 보자  
-그리고 [위의 코드](#code) 를 `자바바이트코드로 컴파일한 결과(HelloWorld.class)`가 아래의 소스코드이다.  
+ 아래는 자바 바이트코드이다.  
+ [위의 코드 HelloWord.java](#code)를 `자바 바이트코드로 컴파일한 결과(HelloWorld.class)`이다.  
 
 ``` java
 public class HelloWorld {
@@ -116,5 +125,45 @@ public class HelloWorld {
 }
 
 ```
+-----  
+   
+### <div id="jitcompiler"> 5.JIT 컴파일러란 무엇이며 어떻게 동작하는지 </div>
+- JIT 컴파일(just-in-time compilation) 은 프로그램을 `실제 실행하는 시점에 기계어로 번역하는 컴파일 기법`이다.
+- 전통적인 입장에서 컴퓨터 프로그램을 만드는 방법은 두 가지가 있는데, `인터프리트 방식과 정적 컴파일 방식`으로 나눌 수 있다. 이 중 `인터프리트 방식은 실행 중 프로그래밍 언어를 읽어가면서 해당 기능에 대응하는 기계어 코드를 실행`하며, 반면 `정적 컴파일은 실행하기 전에 프로그램 코드를 기계어`로 번역한다.
  
+ - JIT 컴파일러는 `두 가지의 방식을 혼합한 방식`으로 생각할 수 있는데, `실행 시점에서 인터프리트 방식으로 기계어 코드를 생성`하면서 `그 코드를 캐싱`하여, 같은 함수가 여러 번 불릴 때 `매번 기계어 코드를 생성하는 것을 방지`한다.
+ 
+ 최근의 자바 가상 머신과 .NET, V8(node.js)에서는 JIT 컴파일을 지원한다.  
+ 즉, `자바 컴파일러가 자바 프로그램 코드를 바이트코드로 변환`한 다음,   
+ `실제 바이트코드를 실행하는 시점에서 자바 가상 머신이 바이트코드를 JIT 컴파일을 통해 기계어로 변환`한다.
 
+
+### <div id="componentsofjvm"> 6.JVM 구성 요소</div>
+
+![jvmcomponents](/images/firstweek/jvmcomponents.jpg "jvm의 구성 요소")
+
+- JVM의 구조는 크게 클래스로더, 실행 엔진, 데이터 영역(Runtime Data Area) , Garbage Collector으로 구분.
+  - 클래스 로더 : 클래스 로더는 JVM의 하위 시스템입니다. 클래스 파일을로드하는 데 사용.   
+  Java 프로그램을 실행할 때마다 클래스 로더가 먼저로드.  
+  - 실행 엔진 :
+    - [인터프리터](#jitcompiler)
+    - [jit컴파일러](#jitcompiler)
+  - Garbage collector :  JVM 힙 공간에서 사용 가능한 모든 개체를 추적하고 불필요한 개체를 제거합니다.   
+  
+  - 데이터영역 (메모리영역, Runtime Data Area)
+    - Method area (메소드 영역)
+    - Heap area (힙 영역)
+    - Stack area (스택 영역)
+    - PC Register (PC 레지스터)
+    - Native method stack
+    > 데이터영역은 잘 정리한 글이 있어 출처로 대채합니다. 
+       -> https://jeong-pro.tistory.com/148                                                
+
+### <div id="#jdkjre"> 7.JDK와 JRE의 차이</div>
+ - JDK : `Java Development Kit`의 약자 이며 `JRE를 포함 + @` 이다.
+   - JDK 는 Java 애플리케이션 및 애플릿을 개발하는 데 사용되는 소프트웨어 개발 환경.  
+   여기에는 JRE 및 여러 개발 도구, 인터프리터 / 로더 (java), 컴파일러 (javac), 아카이버 (jar), 문서 생성기 (javadoc)가 다른 도구와 함께 포함되어 있습니다.
+   
+ - JRE : `Java Runtime Environment`의 약자
+   - JRE 소프트웨어는 Java 프로그램을 실행할 수있는 런타임 환경을 구축.  
+   JRE는 Java 코드를 가져 와서 필요한 라이브러리와 결합한 후 JVM을 시작하여 실행하는 온 디스크 시스템입니다. JRE에는 Java 프로그램을 실행하는 데 필요한 라이브러리와 소프트웨어가 포함되어 있습니다. 
