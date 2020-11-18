@@ -65,7 +65,7 @@ hello word test 폴더에 소스파일을 저장 하였습니다.
 
 
 
-![Compilation process](/images/firstweek/Compilation process.jpeg "컴파일과 실행 과정")
+![Compilation process](/images/firstweek/Compilation-process.jpeg "컴파일과 실행 과정")
 
 
 
