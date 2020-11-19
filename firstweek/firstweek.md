@@ -205,7 +205,7 @@ __JVM의 구조는 크게__
    
     
 
-### <div id="#jdkjre"> 7.JDK와 JRE의 차이</div>
+### <div id="jdkjre"> 7.JDK와 JRE의 차이</div>
  - JDK : `Java Development Kit`의 약자 이며 `JRE를 포함 + @` 이다.
    - JDK 는 Java 애플리케이션 및 애플릿을 개발하는 데 사용되는 소프트웨어 개발 환경.  
    여기에는 JRE 및 여러 개발 도구, 인터프리터 / 로더 (java), 컴파일러 (javac), 아카이버 (jar), 문서 생성기 (javadoc)가 다른 도구와 함께 포함되어 있습니다.
