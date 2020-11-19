@@ -10,8 +10,8 @@
 [2.   컴파일 하는 방법](#compile)   
 [3.   실행하는 방법](#howtorun)  
 [4.   바이트코드란 무엇인가](#bytecode)   
-[5.   JIT 컴파일러란 무엇이며 어떻게 동작하는지](#jitcompiler) 
-[6.   JVM 구성 요소](#componentsofjvm)
+[5.   JIT 컴파일러란 무엇이며 어떻게 동작하는지](#jitcompiler)  
+[6.   JVM 구성 요소](#componentsofjvm)  
 [7.   JDK와 JRE의 차이](#jdkjre)   
 ---
 
